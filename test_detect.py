@@ -2,7 +2,6 @@ import google.generativeai as genai
 import json
 import pandas as pd
 
-# Thay thế bằng API key của bạn
 GOOGLE_API_KEY = "AIzaSyBN_b1WG2OZMHV4qin76DLo0JLAW2D91LE"
 genai.configure(api_key=GOOGLE_API_KEY)
 
@@ -121,7 +120,6 @@ Nếu có các sản phẩm giống nhau nhưng khác nhau về thuộc tính v�
     
     for i, chunk in enumerate(chunk_csv(file_path, chunk_size)):
         print(f"Processing chunk {i+1}:")
-        # Giả sử file CSV của bạn có các cột 'shop_order' và 'clean_content'
         input_chunk_data = chunk.to_dict('records')
         extracted_chunk_data = call_gemini_for_product_detection(prompt, input_chunk_data)
         all_extracted_data.extend(extracted_chunk_data)
